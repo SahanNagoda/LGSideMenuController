@@ -9,6 +9,19 @@ import UIKit
 
 class RightViewController: UIViewController {
 
+    var viewModel:RightViewModel!
+    
+    public class var storyboardName: String {
+        return "Main"
+    }
+    
+    static func create(viewModel: RightViewModel) -> RightViewController {
+        let storyboard = UIStoryboard(name: storyboardName, bundle: Bundle(for: self))
+        let viewController = storyboard.instantiateViewController(withIdentifier: String(describing: RightViewController.self)) as? RightViewController
+        viewController!.viewModel = viewModel
+        return viewController!
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

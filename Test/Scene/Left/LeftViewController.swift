@@ -9,6 +9,19 @@ import UIKit
 
 class LeftViewController: UIViewController {
 
+    var viewModel:LeftViewModel!
+    
+    public class var storyboardName: String {
+        return "Main"
+    }
+    
+    static func create(viewModel: LeftViewModel) -> LeftViewController {
+        let storyboard = UIStoryboard(name: storyboardName, bundle: Bundle(for: self))
+        let viewController = storyboard.instantiateViewController(withIdentifier: String(describing: LeftViewController.self)) as? LeftViewController
+        viewController!.viewModel = viewModel
+        return viewController!
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
